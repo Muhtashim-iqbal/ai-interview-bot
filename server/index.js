@@ -6,6 +6,11 @@ const app = express();
 app.use(cors()); // Allow all origins (or restrict to your GitHub Pages domain)
 app.use(express.json());
 
+// Root route for health check
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 // ✅ Proxy endpoint for Ollama
 app.post("/api/generate", async (req, res) => {
   try {
